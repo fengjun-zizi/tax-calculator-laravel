@@ -1,0 +1,10 @@
+/vendor
+/node_modules
+/.idea
+.env
+/storage/logs/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/cache/*
+/bootstrap/cache/*
+*.sqlite
