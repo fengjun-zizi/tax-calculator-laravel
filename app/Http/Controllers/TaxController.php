@@ -16,8 +16,7 @@ class TaxController extends Controller
             'history' => $history,
         ]);
     }
-
-    // 处理计算并保存记录
+、
     public function calculateTax(Request $request)
     {
         $request->validate([
@@ -34,14 +33,14 @@ class TaxController extends Controller
         $taxRate = $taxRate ?? 0;
         $tax = $income * ($taxRate / 100);
 
-        // 保存记录
+        
         TaxHistory::create([
             'income' => $income,
             'tax_rate' => $taxRate,
             'tax_amount' => $tax,
         ]);
 
-        // 获取分页历史
+       
         $history = TaxHistory::latest()->paginate(5);
 
         return view('calculate', [
@@ -52,7 +51,7 @@ class TaxController extends Controller
         ]);
     }
 
-    // 删除记录
+    
   public function deleteRecord($id)
 {
     try {
