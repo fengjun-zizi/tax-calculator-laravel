@@ -9,7 +9,7 @@
     <div class="container bg-white rounded shadow p-5" style="max-width: 700px;">
         <h1 class="mb-4 text-center text-primary">Tax Calculator</h1>
 
-        {{-- 错误提示 --}}
+    
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>There was a problem with your input:</strong>
@@ -21,14 +21,14 @@
             </div>
         @endif
 
-        {{-- 成功消息 --}}
+      
         @if (session('message'))
             <div class="alert alert-info">
                 {{ session('message') }}
             </div>
         @endif
 
-        {{-- 表单 --}}
+    
         <form method="POST" action="/calculate">
             @csrf
             <div class="mb-3">
@@ -38,7 +38,7 @@
             <button type="submit" class="btn btn-primary w-100">Calculate Tax</button>
         </form>
 
-        {{-- 结果展示 --}}
+
         @isset($taxRate)
             <div class="alert alert-success mt-4">
                 <h5>Calculation Result:</h5>
@@ -47,7 +47,7 @@
             </div>
         @endisset
 
-        {{-- 历史记录表 --}}
+
         @if (isset($history) && $history->count())
             <h4 class="mt-5">Recent Calculations</h4>
             <table class="table table-bordered mt-2">
@@ -79,7 +79,7 @@
                 </tbody>
             </table>
 
-            {{-- 分页 --}}
+          
             <div class="mt-3">
                 {{ $history->links() }}
             </div>

@@ -12,7 +12,7 @@ class TaxApiController extends Controller
 {
     public function calculate(Request $request)
     {
-        // 验证输入
+
         $validator = Validator::make($request->all(), [
             'income' => 'required|numeric|min:0',
         ]);
@@ -26,7 +26,7 @@ class TaxApiController extends Controller
 
         $income = (int) $request->input('income');
 
-        // 查找税率
+    
         $taxRate = DB::table('tax_rates')
             ->where('income_from', '<=', $income)
             ->where('income_to', '>=', $income)
@@ -35,7 +35,7 @@ class TaxApiController extends Controller
         $taxRate = $taxRate ?? 0;
         $tax = $income * ($taxRate / 100);
 
-        // 保存到 tax_histories 表
+        
         TaxHistory::create([
             'income' => $income,
             'tax_rate' => $taxRate,

@@ -8,7 +8,6 @@ use App\Models\TaxHistory;
 
 class TaxController extends Controller
 {
-    // 显示初始页面（带分页历史记录）
     public function showForm()
     {
         $history = TaxHistory::latest()->paginate(5);
